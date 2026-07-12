@@ -264,6 +264,10 @@
     width:3px;height:8px;background:var(--gold);border-radius:2px;
     animation:scrollDot 1.8s ease-in-out infinite;
   }
+
+  /* touch indicator (hidden on desktop) */
+  .scroll-hand{display:none;opacity:0.95}
+  .scroll-hand svg{display:block}
   @keyframes scrollDot{0%{opacity:1;top:6px;}70%{opacity:0;top:18px;}100%{opacity:0;top:6px;}}
 
   .bean{
@@ -676,6 +680,19 @@
     .bean.b1{width:32px;}
     .bean.b2{width:24px;}
     .testi-arrow{display:none;}
+  }
+
+  /* show touch indicator on small screens, hide mouse graphic */
+  @media (max-width:768px){
+    .scroll-mouse{display:none}
+    .scroll-hand{display:block}
+    .scroll-indicator span{color:var(--heading);background:rgba(255,255,255,0.9);padding:6px 10px;border-radius:999px}
+  }
+
+  /* Fix about-media tag stacking on small screens */
+  @media (max-width:768px){
+    .about-media img{height:auto;border-radius:18px;}
+    .about-media-tag{position:static;margin-top:16px;margin-left:0;max-width:100%;}
   }
 
   /* Mobile nav drawer */

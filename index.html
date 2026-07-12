@@ -81,7 +81,15 @@
 
   <div class="scroll-indicator" aria-hidden="true">
     <span>Scroll</span>
-    <div class="scroll-mouse"></div>
+    <div class="scroll-mouse" aria-hidden="true"></div>
+    <div class="scroll-hand" aria-hidden="true">
+      <!-- simple touch/finger SVG for mobile -->
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 2c0 .6-.4 1-1 1s-1-.4-1-1 0-2 0-2" fill="none"/>
+        <path d="M7 7v7a5 5 0 0 0 10 0V9a3 3 0 0 0-6 0v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 3v3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
   </div>
 </header>
 
@@ -113,7 +121,7 @@
         <div class="vm-card">
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="1.6"><path d="M12 2l2.5 6.5L21 10l-5 4.5L17 21l-5-3.5L7 21l1-6.5L3 10l6.5-1.5z"/></svg>
           <h4>Visi Kami</h4>
-          <p>Jadi tempat komunitas Padang kumpul, santai, dan tumbuh — satu cup at a time.</p>
+          <p>Jadi tempat komunitas Bangko kumpul, santai, dan tumbuh — satu cup at a time.</p>
         </div>
         <div class="vm-card">
           <svg viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
