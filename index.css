@@ -689,9 +689,11 @@
   @media (max-width:768px){
     .scroll-mouse{display:none}
     .scroll-hand{display:block}
-    .scroll-indicator span{color:var(--heading);background:rgba(255,255,255,0.9);padding:6px 10px;border-radius:999px}
-    /* place indicator above hero image on mobile (absolute inside .hero) */
-    .hero .scroll-indicator{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);pointer-events:none}
+    .scroll-indicator span{color:var(--heading);background:rgba(255,255,255,0.95);padding:6px 10px;border-radius:999px}
+     /* place indicator just below hero content on mobile and center it relative to the
+       hero content (left:50% on the .hero-content) so it lines up with CTA buttons */
+     .hero-content{position:relative}
+     .hero-content .scroll-indicator{position:absolute;bottom:-56px;left:50%;transform:translateX(-50%);pointer-events:none;z-index:1200;width:max-content}
     .scroll-hand{margin:0 auto}
   }
 
