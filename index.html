@@ -874,6 +874,23 @@
   /* ---------- Footer year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  /* ---------- Scroll indicator visibility tied to hero ---------- */
+  (function(){
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    const heroEl = document.querySelector('.hero');
+    if(scrollIndicator && heroEl && 'IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting) scrollIndicator.classList.remove('hidden-by-scroll');
+          else scrollIndicator.classList.add('hidden-by-scroll');
+        });
+      }, { threshold: 0.2 });
+      io.observe(heroEl);
+      // initial state
+      if(heroEl.getBoundingClientRect().bottom <= 0) scrollIndicator.classList.add('hidden-by-scroll');
+    }
+  })();
+
 })();
 </script>
 </body>
