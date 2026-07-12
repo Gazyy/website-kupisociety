@@ -574,12 +574,12 @@
       </div>
 
       <div>
-        <h5>Tetap Terhubung</h5>
-        <p class="desc">Info bulanan soal brew baru, roast drops, dan event komunitas.</p>
+        <h5>Daftar Info KUPI</h5>
+        <p class="desc">Dapatkan update promo, kopi baru, dan event seru dari KUPI.</p>
         <form class="newsletter-form" id="newsletterForm">
           <label for="newsletterEmail" class="visually-hidden">Alamat email</label>
-          <input type="email" id="newsletterEmail" placeholder="Alamat email Anda" required>
-          <button type="submit" aria-label="Berlangganan">
+          <input type="email" id="newsletterEmail" placeholder="Masukkan emailmu" required>
+          <button type="submit" aria-label="Kirim">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
         </form>
@@ -858,14 +858,43 @@
 
   /* ---------- Newsletter ---------- */
   const newsletterForm = document.getElementById('newsletterForm');
-  newsletterForm.addEventListener('submit', function(e){
+  const newsletterInput = document.getElementById('newsletterEmail');
+  const newsletterButton = newsletterForm.querySelector('button');
+
+  newsletterForm.addEventListener('submit', async function(e){
     e.preventDefault();
-    const input = document.getElementById('newsletterEmail');
-    const btn = newsletterForm.querySelector('button');
-    input.value = '';
-    input.placeholder = "You're on the list ✓";
-    btn.style.transform = 'scale(1.15)';
-    setTimeout(()=> btn.style.transform = '', 300);
+    const email = newsletterInput.value.trim();
+    if(!email){
+      newsletterInput.placeholder = 'Email tidak boleh kosong';
+      return;
+    }
+
+    newsletterButton.disabled = true;
+    newsletterButton.style.transform = 'scale(1.05)';
+
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await res.json();
+      if(data.success) {
+        newsletterInput.value = '';
+        newsletterInput.placeholder = data.message || 'Berhasil didaftarkan ✓';
+      } else {
+        newsletterInput.value = '';
+        newsletterInput.placeholder = data.error || 'Terjadi kesalahan';
+      }
+    } catch (err) {
+      newsletterInput.value = '';
+      newsletterInput.placeholder = 'Tidak dapat terhubung ke server';
+      console.error('Newsletter error:', err);
+    } finally {
+      newsletterButton.disabled = false;
+      setTimeout(()=> newsletterButton.style.transform = '', 300);
+    }
   });
 
   /* ---------- Back to top ---------- */
