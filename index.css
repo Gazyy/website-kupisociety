@@ -253,9 +253,9 @@
   @keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
 
   .scroll-indicator{
-    position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
-    z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;
-    opacity:0;animation:fadeUp 1s var(--ease) 1.1s forwards;
+    position:fixed;bottom:calc(24px + env(safe-area-inset-bottom, 12px));left:50%;transform:translateX(-50%);
+    z-index:1200;display:flex;flex-direction:column;align-items:center;gap:10px;
+    opacity:0;animation:fadeUp 1s var(--ease) 1.1s forwards;pointer-events:none;
   }
   .scroll-indicator span{font-family:'Inter',sans-serif;font-size:10.5px;letter-spacing:2.5px;color:rgba(255,255,255,0.7);text-transform:uppercase;}
   .scroll-mouse{width:24px;height:38px;border:1.5px solid rgba(255,255,255,0.55);border-radius:14px;position:relative;}
@@ -687,6 +687,8 @@
     .scroll-mouse{display:none}
     .scroll-hand{display:block}
     .scroll-indicator span{color:var(--heading);background:rgba(255,255,255,0.9);padding:6px 10px;border-radius:999px}
+    .scroll-indicator{position:fixed; left:50%; transform:translateX(-50%);}
+    .scroll-hand{margin:0 auto}
   }
 
   /* Fix about-media tag stacking on small screens */
