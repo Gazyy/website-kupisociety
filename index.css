@@ -406,6 +406,34 @@
 
   .menu-more{text-align:center;margin-top:var(--space-5);}
 
+  /* New: Compact menu list layout (responsive) */
+  .menu-list-grid{
+    display:grid;grid-template-columns:1fr 420px;gap:var(--space-5);align-items:start;
+  }
+  .menu-list{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow-card);border:1px solid var(--border);}
+  .menu-section{margin-bottom:18px}
+  .menu-section h4{font-size:13px;text-transform:uppercase;color:var(--forest);letter-spacing:1px;margin-bottom:10px}
+  .menu-section ul li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.04)}
+  .menu-section ul li:last-child{border-bottom:0}
+  .menu-section ul li span{font-size:15px;color:var(--heading)}
+  .menu-section .price{font-weight:700;color:var(--gold);min-width:54px;text-align:right}
+
+  .menu-image{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);border:1px solid var(--border);}
+  .menu-image img{width:100%;height:100%;object-fit:cover;max-height:620px;display:block}
+  .menu-note{padding:12px;font-size:13px;color:var(--paragraph);text-align:center;background:var(--bg-alt)}
+
+  /* Gallery: tabbed Indoor / Outdoor */
+  .gallery-tabs{display:flex;gap:12px;justify-content:center;margin-bottom:16px}
+  .gallery-tab{padding:8px 16px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--paragraph);font-weight:600}
+  .gallery-tab.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+  .gallery-grid{display:block}
+  .gallery-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .gallery-panel img{width:100%;height:220px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow-card);transition:transform .35s var(--ease);cursor:pointer}
+  .gallery-panel img:hover{transform:translateY(-6px) scale(1.02)}
+  .gallery-panel.hidden{display:none}
+
+
   /* ============================================================
      7. GALLERY (masonry)
      ============================================================ */
@@ -648,6 +676,8 @@
     .stats-row{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
     .menu-grid{grid-template-columns:repeat(2,1fr);}
+    .menu-list-grid{grid-template-columns:1fr 360px;}
+    .gallery-panel{grid-template-columns:repeat(3,1fr);}
     .masonry{columns:3 200px;}
     .testi-prev{left:0;}
     .testi-next{right:0;}
@@ -665,6 +695,9 @@
     .about-media-tag{position:static;margin-top:-40px;margin-left:16px;max-width:calc(100% - 32px);}
     .vm-grid{grid-template-columns:1fr;}
     .menu-grid{grid-template-columns:1fr;}
+    .menu-list-grid{grid-template-columns:1fr;gap:18px}
+    .menu-image img{max-height:360px}
+    .gallery-panel{grid-template-columns:repeat(2,1fr)}
     .masonry{columns:2 160px;}
     .reserve-panel{padding:var(--space-4);}
     .form-row{grid-template-columns:1fr;}
@@ -683,6 +716,9 @@
     .bean.b1{width:32px;}
     .bean.b2{width:24px;}
     .testi-arrow{display:none;}
+    .gallery-panel{grid-template-columns:1fr}
+    .gallery-panel img{height:140px}
+    .menu-image img{max-height:240px}
   }
 
   /* show touch indicator on small screens, hide mouse graphic */
