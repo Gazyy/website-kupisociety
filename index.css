@@ -411,7 +411,10 @@
     display:grid;grid-template-columns:1fr 420px;gap:var(--space-5);align-items:start;
   }
   .menu-list{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow-card);border:1px solid var(--border);}
-  .menu-section{margin-bottom:18px}
+    /* make menu list flow into two columns on wide screens and stay scrollable
+      so the image on the right remains visible and the layout looks balanced */
+    .menu-list{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-height:620px;overflow:auto;padding:22px}
+    .menu-section{margin-bottom:6px}
   .menu-section h4{font-size:13px;text-transform:uppercase;color:var(--forest);letter-spacing:1px;margin-bottom:10px}
   .menu-section ul li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.04)}
   .menu-section ul li:last-child{border-bottom:0}
