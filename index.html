@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="index.css?v=20260725.1">
 </head>
 <body>
 
@@ -481,21 +481,26 @@
   const backdrop = document.getElementById('drawerBackdrop');
   const drawerClose = document.getElementById('drawerClose');
 
-  function openDrawer(){
-    drawer.classList.add('open'); backdrop.classList.add('open');
-    navToggle.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
+  if(navToggle && drawer && backdrop && drawerClose){
+    function openDrawer(){
+      drawer.classList.add('open'); backdrop.classList.add('open');
+      navToggle.setAttribute('aria-expanded','true');
+      document.body.style.overflow='hidden';
+    }
+    function closeDrawer(){
+      drawer.classList.remove('open'); backdrop.classList.remove('open');
+      navToggle.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    }
+    navToggle.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
+  } else if(navToggle){
+    // no drawer present in DOM (static deploy), hide toggle to avoid errors
+    navToggle.style.display = 'none';
   }
-  function closeDrawer(){
-    drawer.classList.remove('open'); backdrop.classList.remove('open');
-    navToggle.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  }
-  navToggle.addEventListener('click', openDrawer);
-  drawerClose.addEventListener('click', closeDrawer);
-  backdrop.addEventListener('click', closeDrawer);
-  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
 
   /* ---------- Button ripple micro-interaction ---------- */
   document.querySelectorAll('.btn').forEach(btn=>{
