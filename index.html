@@ -156,15 +156,72 @@
 
     <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-panel" id="indoor">
-        <img src="indoor.jpeg" alt="Indoor area" loading="lazy">
-        <img src="indoor_vip.jpeg" alt="Indoor VIP" loading="lazy">
-        <img src="ruangan_dalam.jpeg" alt="Ruangan dalam" loading="lazy">
+        <div class="gallery-card">
+          <img src="indoor.jpeg" alt="Indoor area" loading="lazy">
+        </div>
+        <div class="gallery-card">
+          <img src="indoor_vip.jpeg" alt="Indoor VIP" loading="lazy">
+        </div>
+        <div class="gallery-card">
+          <img src="ruangan_dalam.jpeg" alt="Ruangan dalam" loading="lazy">
+        </div>
       </div>
       <div class="gallery-panel hidden" id="outdoor">
-        <img src="outdoor1.jpeg" alt="Outdoor area" loading="lazy">
-        <img src="outdoor2.jpeg" alt="Outdoor seating" loading="lazy">
-        <img src="outdoor3.jpeg" alt="Outdoor wide" loading="lazy">
+        <div class="gallery-card">
+          <img src="outdoor1.jpeg" alt="Outdoor area" loading="lazy">
+        </div>
+        <div class="gallery-card">
+          <img src="outdoor2.jpeg" alt="Outdoor seating" loading="lazy">
+        </div>
+        <div class="gallery-card">
+          <img src="outdoor3.jpeg" alt="Outdoor wide" loading="lazy">
+        </div>
       </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="gallery-reviews">
+  <div class="container">
+    <div class="section-head center" data-reveal="fade-up">
+      <span class="eyebrow" style="justify-content:center;">Review</span>
+      <h2>Review makanan & minuman</h2>
+      <p style="margin-left:auto;margin-right:auto;">Empat pilihan favorit kami — kopi dan cemilan yang sering dipesan pelanggan.</p>
+    </div>
+
+    <div class="review-grid" data-reveal="fade-up">
+      <article class="review-card">
+        <img src="kopi1.jpeg" alt="Pilihan Kupi" loading="lazy">
+        <div class="review-copy">
+          <h3>Dua Varian Kupi</h3>
+          <p>Body kuat dan rasa kopi yang pekat, cocok untuk yang suka kopi hitam dengan keasaman lembut.</p>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <img src="kopi2.jpeg" alt="Kupi Matcha" loading="lazy">
+        <div class="review-copy">
+          <h3>Kupi Matcha</h3>
+          <p>Susu creamy berpadu dengan espresso halus, pilihan pas untuk teman santai sore atau ngobrol bersama.</p>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <img src="makanan1.jpeg" alt="Kupi pilihan serta Cemilan gurih" loading="lazy">
+        <div class="review-copy">
+          <h3>Kupi dan Cemilan</h3>
+          <p>Cemilan ringan dengan rasa gurih yang pas, mudah disantap kapan saja saat ingin ngemil santai.</p>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <img src="makanan2.jpeg" alt="Kentang goreng renyah" loading="lazy">
+        <div class="review-copy">
+          <h3>Kentang Goreng Renyah</h3>
+          <p>Kentang goreng renyah dengan seasoning ringan — cocok jadi teman kopi dan obrolan santai.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -523,7 +580,7 @@
 
   /* ---------- Gallery lightbox (supports masonry + new gallery panels) ---------- */
   const masonryItems = Array.from(document.querySelectorAll('.masonry-item'));
-  const galleryImgs = Array.from(document.querySelectorAll('.gallery-panel img'));
+  const galleryImgs = Array.from(document.querySelectorAll('.gallery-panel img, .review-card img'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   let galleryItems = [];
